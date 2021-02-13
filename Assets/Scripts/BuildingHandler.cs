@@ -8,19 +8,35 @@ public class BuildingHandler : MonoBehaviour
 
     public GameObject currentBlock;
 
+    SceneManager sm;
+
+
     void Start()
     {
-        Time.timeScale = 1.5f;
-    }
-
-    void Update()
-    {
-        
+        sm = this.GetComponent<SceneManager>();
     }
 
     public void BuildWood()
     {
-        GameObject go = Instantiate(wood, new Vector3(-1, 4, 4), Quaternion.identity);
+        if (currentBlock != null)
+            Destroy(currentBlock);
+
+        float difX = 1;
+        float difZ = 4;
+
+        switch (sm.activePlayer)
+        {
+            case SceneManager.Players.PLAYER1:
+                difX = 1;
+                difZ = 4;
+                break;
+            case SceneManager.Players.PLAYER2:
+                difX = -1;
+                difZ = -4;
+                break;
+        }
+
+        GameObject go = Instantiate(wood, new Vector3(difX, 4, difZ), Quaternion.identity);
         currentBlock = go;
     }
 

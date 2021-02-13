@@ -28,7 +28,7 @@ public class FollowMouse : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 100.0f))
+            if (Physics.Raycast(ray, out hit, 1000.0f))
             {
                 Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
                 if (hit.transform.CompareTag("Preview"))
