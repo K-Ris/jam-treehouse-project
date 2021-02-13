@@ -19,6 +19,6 @@ public class ThrowingHandler : MonoBehaviour
     public void ThrowFruit()
     {
         currentThrowing.GetComponent<Rigidbody>().useGravity = true;
-        currentThrowing.GetComponent<Rigidbody>().AddForce(new Vector3(0, 10f, -6f), ForceMode.Impulse);
+        currentThrowing.GetComponent<Rigidbody>().AddForce(new Vector3(0, 10f, -9f), ForceMode.Impulse);
     }
 }

@@ -10,7 +10,7 @@ public class BuildingHandler : MonoBehaviour
 
     void Start()
     {
-        
+        Time.timeScale = 1.5f;
     }
 
     void Update()
