@@ -21,7 +21,7 @@ public class FollowMouse : MonoBehaviour
         {
             Vector3 temp = Input.mousePosition;
             temp.z = 10f; // Set this to be the distance you want the object to be placed in front of the camera.
-            this.transform.position = new Vector3(0, Camera.main.ScreenToWorldPoint(temp).y, Camera.main.ScreenToWorldPoint(temp).z);
+            this.transform.position = new Vector3(this.transform.position.x, 4, Camera.main.ScreenToWorldPoint(temp).z);
         }
 
         if (Input.GetMouseButton(0))
@@ -59,6 +59,14 @@ public class FollowMouse : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             isFollowing = false;
+            
         }
+
+    }
+
+    private void FixedUpdate()
+    {
+        this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        this.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 }

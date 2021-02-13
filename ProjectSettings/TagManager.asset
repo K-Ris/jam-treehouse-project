@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Block
   - Preview
+  - Fruit
   layers:
   - Default
   - TransparentFX

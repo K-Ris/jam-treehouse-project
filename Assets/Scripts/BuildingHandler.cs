@@ -20,7 +20,7 @@ public class BuildingHandler : MonoBehaviour
 
     public void BuildWood()
     {
-        GameObject go = Instantiate(wood, new Vector3(0, 4, 4), Quaternion.identity);
+        GameObject go = Instantiate(wood, new Vector3(-1, 4, 4), Quaternion.identity);
         currentBlock = go;
     }
 
@@ -32,6 +32,7 @@ public class BuildingHandler : MonoBehaviour
     public void SetBlock()
     {
         currentBlock.gameObject.GetComponent<Rigidbody>().useGravity = true;
+        //currentBlock.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         currentBlock.tag = "Block";
         currentBlock.GetComponent<FollowMouse>().enabled = false;
         currentBlock = null;
