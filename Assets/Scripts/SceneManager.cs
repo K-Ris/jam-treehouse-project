@@ -8,16 +8,18 @@ public class SceneManager : MonoBehaviour
 
     void Start()
     {
+        //Start Process
+        //Throw Coin
         //Player 1 Fortify
         //Player 2 Fortify
 
+        //Turn Loop
+        //Throw Coin
         //Player 1 Throwing
         //Player 2 Throwing
         //...
 
         Time.timeScale = 1.5f;
-
-
 
     }
 
