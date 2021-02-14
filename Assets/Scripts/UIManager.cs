@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject FortifyPanel;
     [SerializeField] Text FortifyPlayerText;
 
+    [SerializeField] GameObject ActivePlayerPanel;
+
     [SerializeField] GameObject BuildingPanel1;
     [SerializeField] GameObject BuildingPanel2;
     [SerializeField] GameObject ThrowingPanel;
@@ -15,6 +17,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject HealthPanel;
     [SerializeField] Image Player1Health;
     [SerializeField] Image Player2Health;
+
+    [SerializeField] GameObject WinPanel;
+    [SerializeField] Text WinnerText;
 
 
     public void SetFortifyUI(string player)
@@ -77,5 +82,27 @@ public class UIManager : MonoBehaviour
 
         Player1Health.fillAmount = fill1;
         Player2Health.fillAmount = fill2;
+    }
+
+    public void ShowWinPanel(SceneManager.Players player)
+    {
+        FortifyPanel.SetActive(false);
+        BuildingPanel1.SetActive(false);
+        BuildingPanel2.SetActive(false);
+        HealthPanel.SetActive(false);
+        ThrowingPanel.SetActive(false);
+        ActivePlayerPanel.SetActive(false);
+
+        switch (player)
+        {
+            case SceneManager.Players.PLAYER1:
+                WinnerText.text = player + " is the winner!";
+                break;
+            case SceneManager.Players.PLAYER2:
+                WinnerText.text = player + " is the winner!";
+                break;
+        }
+
+        WinPanel.SetActive(true);
     }
 }

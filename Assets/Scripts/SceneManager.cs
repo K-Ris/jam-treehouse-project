@@ -98,6 +98,20 @@ public class SceneManager : MonoBehaviour
         }
 
         um.SetPlayerHealth();
+
+        if(HealthPlayer1_cur <= 0)
+        {
+            um.ShowWinPanel(Players.PLAYER1);
+        }
+        else if (HealthPlayer2_cur <= 0)
+        {
+            um.ShowWinPanel(Players.PLAYER2);
+        }
+    }
+
+    public void Replay()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }
 
 
