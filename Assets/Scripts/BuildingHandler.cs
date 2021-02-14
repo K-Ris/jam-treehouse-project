@@ -36,7 +36,7 @@ public class BuildingHandler : MonoBehaviour
                 break;
         }
 
-        GameObject go = Instantiate(wood, new Vector3(difX, 4, difZ), Quaternion.identity);
+        GameObject go = Instantiate(wood, new Vector3(difX, 6, difZ), Quaternion.identity);
         currentBlock = go;
     }
 
