@@ -21,6 +21,8 @@ public class BlockHandler : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
+
+            Destroy(collision.transform.gameObject);
         }
     }
 }

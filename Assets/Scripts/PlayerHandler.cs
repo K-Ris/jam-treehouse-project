@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Treehouse;
 using UnityEngine;
 
 public class PlayerHandler : MonoBehaviour
@@ -14,6 +15,8 @@ public class PlayerHandler : MonoBehaviour
             //Debug.Log(player);
             int damage = collision.transform.GetComponent<FruitHandler>().fruitDamage;
             GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().DamagePlayer(player, damage);
+
+            Destroy(collision.transform.gameObject);
         }
     }
 }
