@@ -623,6 +623,7 @@ GameObject:
   - component: {fileID: 194657504}
   - component: {fileID: 194657503}
   - component: {fileID: 194657502}
+  - component: {fileID: 194657506}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -705,6 +706,19 @@ Transform:
   m_Father: {fileID: 1199965844}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194657506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194657501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0148c791c123a6145a6c7ddca8bbdce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 0
 --- !u!1 &197559150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,7 +1362,7 @@ GameObject:
   - component: {fileID: 576926157}
   m_Layer: 0
   m_Name: SceneManager
-  m_TagString: Untagged
+  m_TagString: SceneManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1414,6 +1428,9 @@ MonoBehaviour:
   BuildingPanel1: {fileID: 1306654529}
   BuildingPanel2: {fileID: 1883432939}
   ThrowingPanel: {fileID: 228185422}
+  HealthPanel: {fileID: 1859984086}
+  Player1Health: {fileID: 98706194}
+  Player2Health: {fileID: 841320767}
 --- !u!114 &576926159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1427,6 +1444,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activePlayer: 0
+  HealthPlayer1_max: 100
+  HealthPlayer1_cur: 100
+  HealthPlayer2_max: 100
+  HealthPlayer2_cur: 100
 --- !u!1 &601157583
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,6 +4576,7 @@ GameObject:
   - component: {fileID: 1924085452}
   - component: {fileID: 1924085451}
   - component: {fileID: 1924085450}
+  - component: {fileID: 1924085454}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Untagged
@@ -4637,6 +4659,19 @@ Transform:
   m_Father: {fileID: 2009395266}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1924085454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924085449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0148c791c123a6145a6c7ddca8bbdce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 1
 --- !u!1 &1929415090
 GameObject:
   m_ObjectHideFlags: 0
@@ -4673,7 +4708,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 898}
+  m_AnchoredPosition: {x: 0, y: 848}
   m_SizeDelta: {x: 320, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1929415092

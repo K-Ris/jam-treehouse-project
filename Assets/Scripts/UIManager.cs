@@ -12,6 +12,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject BuildingPanel2;
     [SerializeField] GameObject ThrowingPanel;
 
+    [SerializeField] GameObject HealthPanel;
+    [SerializeField] Image Player1Health;
+    [SerializeField] Image Player2Health;
+
 
     public void SetFortifyUI(string player)
     {
@@ -55,5 +59,23 @@ public class UIManager : MonoBehaviour
                 FortifyPlayerText.text = "Player 2";
                 break;
         }
+    }
+
+    public void SetPlayerHealth()
+    {
+        int health1 = this.GetComponent<SceneManager>().HealthPlayer1_max;
+        int health1cur = this.GetComponent<SceneManager>().HealthPlayer1_cur;
+
+        int health2 = this.GetComponent<SceneManager>().HealthPlayer2_max;
+        int health2cur = this.GetComponent<SceneManager>().HealthPlayer2_cur;
+
+        float fill1 = (float)health1cur / (float)health1;
+        float fill2 = (float)health2cur / (float)health2;
+
+        Debug.Log(fill1);
+        Debug.Log(fill2);
+
+        Player1Health.fillAmount = fill1;
+        Player2Health.fillAmount = fill2;
     }
 }

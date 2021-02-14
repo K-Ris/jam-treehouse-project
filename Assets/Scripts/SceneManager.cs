@@ -10,6 +10,12 @@ public class SceneManager : MonoBehaviour
 
     public Players activePlayer = Players.PLAYER1;
 
+    public int HealthPlayer1_max = 100;
+    public int HealthPlayer1_cur = 100;
+
+    public int HealthPlayer2_max = 100;
+    public int HealthPlayer2_cur = 100;
+
     void Start()
     {
         um = this.GetComponent<UIManager>();
@@ -77,6 +83,21 @@ public class SceneManager : MonoBehaviour
 
         um.SetThrowingUI(activePlayer);
 
+    }
+
+    public void DamagePlayer(Players player)
+    {
+        switch (player)
+        {
+            case Players.PLAYER1:
+                HealthPlayer1_cur -= 20;
+                break;
+            case Players.PLAYER2:
+                HealthPlayer2_cur -= 20;
+                break;
+        }
+
+        um.SetPlayerHealth();
     }
 
 
