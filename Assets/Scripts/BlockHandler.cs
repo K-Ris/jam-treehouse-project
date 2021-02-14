@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHandler : MonoBehaviour
+public class BlockHandler : MonoBehaviour
 {
-    public SceneManager.Players player;
+    public int blockHealth = 50;
+    public int blockHealth_cur = 50;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -13,7 +14,13 @@ public class PlayerHandler : MonoBehaviour
             //Debug.Log(this.transform.name);
             //Debug.Log(player);
             int damage = collision.transform.GetComponent<FruitHandler>().fruitDamage;
-            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().DamagePlayer(player, damage);
+
+            blockHealth_cur -= damage;
+
+            if(blockHealth_cur <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

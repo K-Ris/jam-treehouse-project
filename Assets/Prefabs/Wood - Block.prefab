@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4932290086769630566}
   - component: {fileID: 4932290086769630569}
   - component: {fileID: 4932290086769630568}
+  - component: {fileID: -6268500692991874417}
   - component: {fileID: -7713762774312693206}
   m_Layer: 0
   m_Name: Wood - Block
@@ -111,6 +112,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 98
   m_CollisionDetection: 0
+--- !u!114 &-6268500692991874417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932290086769630571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce9187cccef0f748b5bd8900e0538de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockHealth: 50
+  blockHealth_cur: 50
 --- !u!114 &-7713762774312693206
 MonoBehaviour:
   m_ObjectHideFlags: 0

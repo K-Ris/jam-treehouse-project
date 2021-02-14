@@ -85,7 +85,7 @@ public class SceneManager : MonoBehaviour
 
     }
 
-    public void DamagePlayer(Players player)
+    public void DamagePlayer(Players player, int damage)
     {
         switch (player)
         {
