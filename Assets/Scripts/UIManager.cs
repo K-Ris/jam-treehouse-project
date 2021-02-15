@@ -12,36 +12,40 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject ActivePlayerPanel;
 
-    [SerializeField] GameObject BuildingPanel1;
-    [SerializeField] GameObject BuildingPanel2;
-    [SerializeField] GameObject ThrowingPanel;
+    [SerializeField] UIView BuildingPanel1;
+    [SerializeField] UIView BuildingPanel2;
+
+    [SerializeField] UIView ThrowingPanel;
+    [SerializeField] GameObject Player1Panel;
+    [SerializeField] GameObject Player2Panel;
 
     [SerializeField] GameObject HealthPanel;
     [SerializeField] Image Player1Health;
     [SerializeField] Image Player2Health;
 
-    [SerializeField] GameObject WinPanel;
+    [SerializeField] UIView WinPanel;
     [SerializeField] Text WinnerText;
 
 
-    public void SetFortifyUI(string player)
+    public void SetFortifyUI()
     {
-        //FortifyPlayerText.text = player;
 	    FortifyPanel.Show();
     }
 
     public void SetBuildingUI(SceneManager.Players player)
     {
+        FortifyPanel.Hide();
+
         switch (player)
         {
             case SceneManager.Players.PLAYER1:
-                BuildingPanel1.SetActive(true);
-                BuildingPanel2.SetActive(false);
+                BuildingPanel1.Show();
+                BuildingPanel2.Hide();
                 FortifyPlayerText.text = "Player 1";
                 break;
             case SceneManager.Players.PLAYER2:
-                BuildingPanel2.SetActive(true);
-                BuildingPanel1.SetActive(false);
+                BuildingPanel2.Show();
+                BuildingPanel1.Hide();
                 FortifyPlayerText.text = "Player 2";
                 break;
         }
@@ -52,18 +56,22 @@ public class UIManager : MonoBehaviour
 
     public void SetThrowingUI(SceneManager.Players player)
     {
-        BuildingPanel1.SetActive(false);
-        BuildingPanel2.SetActive(false);
+        BuildingPanel1.Hide();
+        BuildingPanel2.Hide();
 
-        ThrowingPanel.SetActive(true);
+        ThrowingPanel.Show();
 
         switch (player)
         {
             case SceneManager.Players.PLAYER1:
                 FortifyPlayerText.text = "Player 1";
+                Player1Panel.SetActive(true);
+                Player2Panel.SetActive(false);
                 break;
             case SceneManager.Players.PLAYER2:
                 FortifyPlayerText.text = "Player 2";
+                Player1Panel.SetActive(false);
+                Player2Panel.SetActive(true);
                 break;
         }
     }
@@ -89,10 +97,10 @@ public class UIManager : MonoBehaviour
     public void ShowWinPanel(SceneManager.Players player)
     {
 	    FortifyPanel.Hide();
-        BuildingPanel1.SetActive(false);
-        BuildingPanel2.SetActive(false);
+        BuildingPanel1.Hide();
+        BuildingPanel2.Hide();
         HealthPanel.SetActive(false);
-        ThrowingPanel.SetActive(false);
+        ThrowingPanel.Hide();
         ActivePlayerPanel.SetActive(false);
 
         switch (player)
@@ -105,6 +113,6 @@ public class UIManager : MonoBehaviour
                 break;
         }
 
-        WinPanel.SetActive(true);
+        WinPanel.Show();
     }
 }

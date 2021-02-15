@@ -46,6 +46,7 @@ public class FruitDrag : MonoBehaviour
                 Mathf.Clamp(startpoint.y - endpoint.y, minimumpower.y, maximumpower.y),
                 Mathf.Clamp(startpoint.z - endpoint.z, minimumpower.z, maximumpower.z));
             rb.AddForce(throwforce * ThrowPower, ForceMode.Impulse);
+            rb.useGravity = true;
             EndLine();
         }
     }

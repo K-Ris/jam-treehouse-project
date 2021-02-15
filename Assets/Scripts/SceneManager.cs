@@ -37,7 +37,7 @@ namespace Treehouse
 
             activePlayer = Players.PLAYER1;
 
-            um.SetFortifyUI("Player 1");
+            um.SetFortifyUI();
         }
 
         public void StartBuilding()
@@ -103,11 +103,11 @@ namespace Treehouse
 
             if (HealthPlayer1_cur <= 0)
             {
-                um.ShowWinPanel(Players.PLAYER1);
+                um.ShowWinPanel(Players.PLAYER2);
             }
             else if (HealthPlayer2_cur <= 0)
             {
-                um.ShowWinPanel(Players.PLAYER2);
+                um.ShowWinPanel(Players.PLAYER1);
             }
         }
 
