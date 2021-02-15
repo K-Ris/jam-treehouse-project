@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using Treehouse;
 using UnityEngine;
 using UnityEngine.UI;
+using Doozy.Engine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] GameObject FortifyPanel;
+    [SerializeField] UIView FortifyPanel;
     [SerializeField] Text FortifyPlayerText;
 
     [SerializeField] GameObject ActivePlayerPanel;
@@ -25,8 +26,8 @@ public class UIManager : MonoBehaviour
 
     public void SetFortifyUI(string player)
     {
-        FortifyPlayerText.text = player;
-        FortifyPanel.SetActive(true);
+        //FortifyPlayerText.text = player;
+	    FortifyPanel.Show();
     }
 
     public void SetBuildingUI(SceneManager.Players player)
@@ -45,7 +46,7 @@ public class UIManager : MonoBehaviour
                 break;
         }
 
-        FortifyPanel.SetActive(false);
+	    FortifyPanel.Hide();
 
     }
 
@@ -87,7 +88,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowWinPanel(SceneManager.Players player)
     {
-        FortifyPanel.SetActive(false);
+	    FortifyPanel.Hide();
         BuildingPanel1.SetActive(false);
         BuildingPanel2.SetActive(false);
         HealthPanel.SetActive(false);
