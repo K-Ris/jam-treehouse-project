@@ -8,7 +8,9 @@ public class ThrowingHandler : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
 
-    public GameObject apple;
+	public GameObject apple;
+	public GameObject cherry;
+	public GameObject melon;
 
     public GameObject currentThrowing;
 
@@ -32,8 +34,35 @@ public class ThrowingHandler : MonoBehaviour
                 currentThrowing = go2;
                 break;
         }
-
     }
+    
+	public void EquipCherry(){
+		switch (sm.activePlayer)
+		{
+		case SceneManager.Players.PLAYER1:
+			GameObject go1 = Instantiate(cherry, new Vector3(player1.transform.position.x + -2f, player1.transform.position.y, player1.transform.position.z), Quaternion.identity);
+			currentThrowing = go1;
+			break;
+		case SceneManager.Players.PLAYER2:
+			GameObject go2 = Instantiate(cherry, new Vector3(player2.transform.position.x + 2f, player2.transform.position.y, player2.transform.position.z), Quaternion.identity);
+			currentThrowing = go2;
+			break;
+		}
+	}
+	
+	public void EquipMelon(){
+		switch (sm.activePlayer)
+		{
+		case SceneManager.Players.PLAYER1:
+			GameObject go1 = Instantiate(melon, new Vector3(player1.transform.position.x + -2f, player1.transform.position.y + 0.5f, player1.transform.position.z), Quaternion.identity);
+			currentThrowing = go1;
+			break;
+		case SceneManager.Players.PLAYER2:
+			GameObject go2 = Instantiate(melon, new Vector3(player2.transform.position.x + 2f, player2.transform.position.y + 0.5f, player2.transform.position.z), Quaternion.identity);
+			currentThrowing = go2;
+			break;
+		}
+	}
 
     public void ThrowFruit()
     {

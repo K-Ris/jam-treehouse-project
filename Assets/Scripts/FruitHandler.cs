@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class FruitHandler : MonoBehaviour
 {
-    public int fruitDamage = 20;
+	public int fruitDamage = 20;
+    
+	public FruitType fruitType;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -33,4 +35,10 @@ public class FruitHandler : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    
+	public enum FruitType{
+		APPLE,
+		CHERRY,
+		MELONE
+	}
 }

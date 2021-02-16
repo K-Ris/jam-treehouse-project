@@ -5,7 +5,9 @@ using UnityEngine;
 public class BlockHandler : MonoBehaviour
 {
     public int blockHealth = 50;
-    public int blockHealth_cur = 50;
+	public int blockHealth_cur = 50;
+    
+	public BlockType blockType;
 
     //private void OnCollisionEnter(Collision collision)
     //{
@@ -35,4 +37,10 @@ public class BlockHandler : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    
+	public enum BlockType{
+		WOOD,
+		SHEET,
+		PILLOW
+	}
 }

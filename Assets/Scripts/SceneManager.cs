@@ -11,12 +11,34 @@ namespace Treehouse
         bool firstBuilder = false;
 
         public Players activePlayer = Players.PLAYER1;
-
+	    
+	    [Header("Player 1 Health")]
         public int HealthPlayer1_max = 100;
-        public int HealthPlayer1_cur = 100;
-
+	    public int HealthPlayer1_cur = 100;
+        
+	    [Header("Player 1 Materials")]
+	    public int Player1_WoodCount = 6;
+	    public int Player1_SheetCount = 3;
+	    public int Player1_PillowCount = 2;
+	    
+	    [Header("Player 1 Fruits")]
+	    public int Player1_AppleCount = 4;
+	    public int Player1_CerryCount = 3;
+	    public int Player1_MelonCount = 1;
+	    
+	    [Header("Player 2 Health")]
         public int HealthPlayer2_max = 100;
-        public int HealthPlayer2_cur = 100;
+	    public int HealthPlayer2_cur = 100;
+        
+	    [Header("Player 2 Materials")]
+	    public int Player2_WoodCount = 6;
+	    public int Player2_SheetCount = 3;
+	    public int Player2_PillowCount = 2;
+	    
+	    [Header("Player 2 Fruits")]
+	    public int Player2_AppleCount = 4;
+	    public int Player2_CerryCount = 3;
+	    public int Player2_MelonCount = 1;
 
         void Start()
         {
@@ -46,7 +68,9 @@ namespace Treehouse
         }
 
         public void FinishBuilding()
-        {
+	    {
+		    this.GetComponent<BuildingHandler>().SetBlock();
+        	
             if (!firstBuilder)
             {
                 switch (activePlayer)
@@ -115,6 +139,40 @@ namespace Treehouse
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
         }
+        
+	    public void ThrowFruit(FruitHandler.FruitType fruit){
+	    	
+	    	switch(activePlayer){
+	    	case Players.PLAYER1:
+		    	switch(fruit){
+		    	case FruitHandler.FruitType.APPLE:
+			    	Player1_AppleCount--;
+			    	break;
+		    	case FruitHandler.FruitType.CHERRY:
+		    		break;
+		    	case FruitHandler.FruitType.MELONE:
+			    	break;
+		    	
+		    	}
+		    	break;
+	    	case Players.PLAYER2:
+		    	switch(fruit){
+		    	case FruitHandler.FruitType.APPLE:
+			    	Player2_AppleCount--;
+			    	break;
+		    	case FruitHandler.FruitType.CHERRY:
+		    		break;
+		    	case FruitHandler.FruitType.MELONE:
+			    	break;
+		    	
+		    	}
+		    	break;
+	    	}
+	    	
+	    	um.UpdateFruitUI(activePlayer);
+	    	
+	    	
+	    }
 
 
         #region enum

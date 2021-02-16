@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Treehouse;
 
 public class FruitDrag : MonoBehaviour
 {
@@ -46,7 +47,8 @@ public class FruitDrag : MonoBehaviour
                 Mathf.Clamp(startpoint.y - endpoint.y, minimumpower.y, maximumpower.y),
                 Mathf.Clamp(startpoint.z - endpoint.z, minimumpower.z, maximumpower.z));
             rb.AddForce(throwforce * ThrowPower, ForceMode.Impulse);
-            rb.useGravity = true;
+	        rb.useGravity = true;
+	        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().ThrowFruit(this.GetComponent<FruitHandler>().fruitType);
             EndLine();
         }
     }
