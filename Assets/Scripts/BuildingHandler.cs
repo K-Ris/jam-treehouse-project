@@ -27,17 +27,17 @@ public class BuildingHandler : MonoBehaviour
             Destroy(currentBlock);
 
         float difX = 1;
-        float difZ = 4;
+        //float difZ = 4;
 
         switch (sm.activePlayer)
         {
             case SceneManager.Players.PLAYER1:
                 difX = 1;
-	            difZ = 4;
+	            //difZ = 4;
                 break;
             case SceneManager.Players.PLAYER2:
                 difX = -1;
-	            difZ = -4;
+	            //difZ = -4;
                 break;
         }
         GameObject go = Instantiate(wood, new Vector3(difX, 6, 0), Quaternion.identity);
@@ -50,17 +50,17 @@ public class BuildingHandler : MonoBehaviour
 			Destroy(currentBlock);
 
 		float difX = 1;
-		float difZ = 4;
+		//float difZ = 4;
 
 		switch (sm.activePlayer)
 		{
 		case SceneManager.Players.PLAYER1:
 			difX = 1;
-			difZ = 4;
+			//difZ = 4;
 			break;
 		case SceneManager.Players.PLAYER2:
 			difX = -1;
-			difZ = -4;
+			//difZ = -4;
 			break;
 		}
 		GameObject go = Instantiate(sheet, new Vector3(difX, 6, 0), Quaternion.identity);
@@ -73,17 +73,17 @@ public class BuildingHandler : MonoBehaviour
 			Destroy(currentBlock);
 
 		float difX = 1;
-		float difZ = 4;
+		//float difZ = 4;
 
 		switch (sm.activePlayer)
 		{
 		case SceneManager.Players.PLAYER1:
 			difX = 1;
-			difZ = 4;
+			//difZ = 4;
 			break;
 		case SceneManager.Players.PLAYER2:
 			difX = -1;
-			difZ = -4;
+			//difZ = -4;
 			break;
 		}
 		GameObject go = Instantiate(pillow, new Vector3(difX, 6, 0), Quaternion.identity);

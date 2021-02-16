@@ -17,6 +17,8 @@ public class FruitDrag : MonoBehaviour
     Vector3 startpoint;
     Vector3 endpoint;
 
+    public float torque;
+
     private void Awake()
     {
         line = GetComponent<LineRenderer>();
@@ -63,6 +65,8 @@ public class FruitDrag : MonoBehaviour
                 Mathf.Clamp(startpoint.y - endpoint.y, minimumpower.y, maximumpower.y),
                 Mathf.Clamp(startpoint.z - endpoint.z, minimumpower.z, maximumpower.z));
         rb.AddForce(throwforce * ThrowPower, ForceMode.Impulse);
+        //Debug.Log("x: " + throwforce.x + " y " + throwforce.y + " z " + throwforce.z);
+        rb.AddTorque(transform.forward * torque * (throwforce.y * 10f));
         rb.useGravity = true;
         GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().ThrowFruit(this.GetComponent<FruitHandler>().fruitType);
         EndLine();

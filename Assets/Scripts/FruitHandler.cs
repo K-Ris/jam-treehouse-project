@@ -19,8 +19,7 @@ public class FruitHandler : MonoBehaviour
             GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().DamagePlayer(collision.transform.GetComponent<PlayerHandler>().player, damage);
             collision.transform.GetComponent<PlayerHandler>().PlayHit();
 
-            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
-            Destroy(this.gameObject);
+            DestroyFruit();
         }
         else if (collision.transform.CompareTag("Block"))
         {
@@ -30,13 +29,11 @@ public class FruitHandler : MonoBehaviour
 
             collision.transform.GetComponent<BlockHandler>().damageBlock(fruitDamage);
 
-            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
-            Destroy(this.gameObject);
+            DestroyFruit();
         }
         else
         {
-            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
-            Destroy(this.gameObject);
+            DestroyFruit();
         }
     }
     
@@ -45,4 +42,17 @@ public class FruitHandler : MonoBehaviour
 		CHERRY,
 		MELONE
 	}
+
+    private void DestroyFruit()
+    {
+        StartCoroutine(DoDestroyFruit());
+    }
+
+    IEnumerator DoDestroyFruit()
+    {
+        yield return new WaitForSeconds(0.05f);
+
+        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
+        Destroy(this.gameObject);
+    }
 }

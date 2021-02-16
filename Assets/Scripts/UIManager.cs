@@ -208,8 +208,8 @@ public class UIManager : MonoBehaviour
         float fill1 = (float)health1cur / (float)health1;
         float fill2 = (float)health2cur / (float)health2;
 
-        Debug.Log(fill1);
-        Debug.Log(fill2);
+        //Debug.Log(fill1);
+        //Debug.Log(fill2);
 
         Player1Health.fillAmount = fill1;
         Player2Health.fillAmount = fill2;
