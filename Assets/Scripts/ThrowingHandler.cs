@@ -30,7 +30,7 @@ public class ThrowingHandler : MonoBehaviour
                 currentThrowing = go1;
                 break;
             case SceneManager.Players.PLAYER2:
-                GameObject go2 = Instantiate(apple, new Vector3(player2.transform.position.x + 2f, player2.transform.position.y, player2.transform.position.z), Quaternion.identity);
+                GameObject go2 = Instantiate(apple, new Vector3(player2.transform.position.x + -2f, player2.transform.position.y, player2.transform.position.z), Quaternion.identity);
                 currentThrowing = go2;
                 break;
         }
@@ -44,7 +44,7 @@ public class ThrowingHandler : MonoBehaviour
 			currentThrowing = go1;
 			break;
 		case SceneManager.Players.PLAYER2:
-			GameObject go2 = Instantiate(cherry, new Vector3(player2.transform.position.x + 2f, player2.transform.position.y, player2.transform.position.z), Quaternion.identity);
+			GameObject go2 = Instantiate(cherry, new Vector3(player2.transform.position.x + -2f, player2.transform.position.y, player2.transform.position.z), Quaternion.identity);
 			currentThrowing = go2;
 			break;
 		}
@@ -58,7 +58,7 @@ public class ThrowingHandler : MonoBehaviour
 			currentThrowing = go1;
 			break;
 		case SceneManager.Players.PLAYER2:
-			GameObject go2 = Instantiate(melon, new Vector3(player2.transform.position.x + 2f, player2.transform.position.y + 0.5f, player2.transform.position.z), Quaternion.identity);
+			GameObject go2 = Instantiate(melon, new Vector3(player2.transform.position.x + -2f, player2.transform.position.y + 0.5f, player2.transform.position.z), Quaternion.identity);
 			currentThrowing = go2;
 			break;
 		}

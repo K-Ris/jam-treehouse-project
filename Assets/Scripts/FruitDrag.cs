@@ -42,15 +42,30 @@ public class FruitDrag : MonoBehaviour
         {
             endpoint = camera.ScreenToWorldPoint(Input.mousePosition);
 
-            throwforce = new Vector3(
+            SceneManager sm = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>();
+            if (sm.activePlayer == SceneManager.Players.PLAYER2)
+            {
+                this.transform.position = new Vector3(sm.Player2.transform.position.x + 2f, this.transform.position.y, this.transform.position.z);
+            }
+
+            sm.PlayThrowAnimation();
+
+            StartCoroutine(StartThrow());
+        }
+    }
+
+    IEnumerator StartThrow()
+    {
+        yield return new WaitForSeconds(0.4f);
+
+        throwforce = new Vector3(
                 0,
                 Mathf.Clamp(startpoint.y - endpoint.y, minimumpower.y, maximumpower.y),
                 Mathf.Clamp(startpoint.z - endpoint.z, minimumpower.z, maximumpower.z));
-            rb.AddForce(throwforce * ThrowPower, ForceMode.Impulse);
-	        rb.useGravity = true;
-	        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().ThrowFruit(this.GetComponent<FruitHandler>().fruitType);
-            EndLine();
-        }
+        rb.AddForce(throwforce * ThrowPower, ForceMode.Impulse);
+        rb.useGravity = true;
+        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().ThrowFruit(this.GetComponent<FruitHandler>().fruitType);
+        EndLine();
     }
 
     public void DrawLine(Vector3 startpoint, Vector3 endpoint)
@@ -68,5 +83,7 @@ public class FruitDrag : MonoBehaviour
     public void EndLine()
     {
         line.positionCount = 0;
+
+        this.GetComponent<FruitDrag>().enabled = false;
     }
 }

@@ -18,6 +18,8 @@ public class FruitHandler : MonoBehaviour
             int damage = this.GetComponent<FruitHandler>().fruitDamage;
             GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().DamagePlayer(collision.transform.GetComponent<PlayerHandler>().player, damage);
             collision.transform.GetComponent<PlayerHandler>().PlayHit();
+
+            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
             Destroy(this.gameObject);
         }
         else if (collision.transform.CompareTag("Block"))
@@ -28,10 +30,12 @@ public class FruitHandler : MonoBehaviour
 
             collision.transform.GetComponent<BlockHandler>().damageBlock(fruitDamage);
 
+            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
             Destroy(this.gameObject);
         }
         else
         {
+            GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
             Destroy(this.gameObject);
         }
     }

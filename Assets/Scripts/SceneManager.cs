@@ -11,6 +11,11 @@ namespace Treehouse
         bool firstBuilder = false;
 
         public Players activePlayer = Players.PLAYER1;
+
+        public GameObject Player1;
+        public Animator Player1Anim;
+        public GameObject Player2;
+        public Animator Player2Anim;
 	    
 	    [Header("Player 1 Health")]
         public int HealthPlayer1_max = 100;
@@ -107,7 +112,8 @@ namespace Treehouse
                     break;
             }
 
-            um.SetThrowingUI(activePlayer);
+            if(HealthPlayer1_cur > 0 && HealthPlayer2_cur > 0)
+                um.SetThrowingUI(activePlayer);
 
         }
 
@@ -149,8 +155,10 @@ namespace Treehouse
 			    	Player1_AppleCount--;
 			    	break;
 		    	case FruitHandler.FruitType.CHERRY:
+                    Player1_CerryCount--;
 		    		break;
 		    	case FruitHandler.FruitType.MELONE:
+                    Player1_MelonCount--;
 			    	break;
 		    	
 		    	}
@@ -161,18 +169,47 @@ namespace Treehouse
 			    	Player2_AppleCount--;
 			    	break;
 		    	case FruitHandler.FruitType.CHERRY:
+                            Player2_CerryCount--;
 		    		break;
 		    	case FruitHandler.FruitType.MELONE:
+                            Player2_MelonCount--;
 			    	break;
 		    	
 		    	}
 		    	break;
 	    	}
-	    	
-	    	um.UpdateFruitUI(activePlayer);
-	    	
-	    	
-	    }
+
+            um.UpdateFruitUI(activePlayer);
+
+        }
+
+        public void HitHandling()
+        {
+            StartCoroutine(HandleHitCo());
+        }
+
+        IEnumerator HandleHitCo()
+        {
+            yield return new WaitForSeconds(2);
+
+            //remove fruit
+            //end turn
+            if (HealthPlayer1_cur > 0 && HealthPlayer2_cur > 0)
+                ThrowingTurn();
+        }
+
+        public void PlayThrowAnimation()
+        {
+            switch (activePlayer)
+            {
+                case Players.PLAYER1:
+                    Player1Anim.SetTrigger("Throw");
+                    break;
+                case Players.PLAYER2:
+                    Player2Anim.SetTrigger("Throw");
+                    break;
+            }
+        }
 
 
         #region enum

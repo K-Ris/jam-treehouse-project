@@ -12,26 +12,30 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject ActivePlayerPanel;
 
-	[SerializeField] UIView BuildingPanel1;
-	[SerializeField] UIButton WoodContainer1;
-	[SerializeField] Text WoodCountText1;
-	[SerializeField] UIButton SheetContainer1;
-	[SerializeField] Text SheetCountText1;
-    
-	[SerializeField] UIView BuildingPanel2;
-	[SerializeField] UIButton WoodContainer2;
-	[SerializeField] Text WoodCountText2;
-	[SerializeField] UIButton SheetContainer2;
-	[SerializeField] Text SheetCountText2;
+    [SerializeField] UIView BuildingPanel1;
+    [SerializeField] UIButton WoodContainer1;
+    [SerializeField] Text WoodCountText1;
+    [SerializeField] UIButton SheetContainer1;
+    [SerializeField] Text SheetCountText1;
+    [SerializeField] UIButton PillowContainer1;
+    [SerializeField] Text PillowCountText1;
+
+    [SerializeField] UIView BuildingPanel2;
+    [SerializeField] UIButton WoodContainer2;
+    [SerializeField] Text WoodCountText2;
+    [SerializeField] UIButton SheetContainer2;
+    [SerializeField] Text SheetCountText2;
+    [SerializeField] UIButton PillowContainer2;
+    [SerializeField] Text PillowCountText2;
 
     [SerializeField] UIView ThrowingPanel;
-	[SerializeField] GameObject Player1Panel;
-	[SerializeField] UIButton AppleContainer1;
-	[SerializeField] Text AppleCount1;
-    
-	[SerializeField] GameObject Player2Panel;
-	[SerializeField] UIButton AppleContainer2;
-	[SerializeField] Text AppleCount2;
+    [SerializeField] GameObject Player1Panel;
+    [SerializeField] UIButton AppleContainer1;
+    [SerializeField] Text AppleCount1;
+
+    [SerializeField] GameObject Player2Panel;
+    [SerializeField] UIButton AppleContainer2;
+    [SerializeField] Text AppleCount2;
 
     [SerializeField] GameObject HealthPanel;
     [SerializeField] Image Player1Health;
@@ -43,7 +47,7 @@ public class UIManager : MonoBehaviour
 
     public void SetFortifyUI()
     {
-	    FortifyPanel.Show();
+        FortifyPanel.Show();
     }
 
     public void SetBuildingUI(SceneManager.Players player)
@@ -55,135 +59,143 @@ public class UIManager : MonoBehaviour
             case SceneManager.Players.PLAYER1:
                 BuildingPanel1.Show();
                 BuildingPanel2.Hide();
-	            FortifyPlayerText.text = "Player 1";
-	            UpdateBuildingMaterialUI(player);
+                FortifyPlayerText.text = "Player 1";
+                UpdateBuildingMaterialUI(player);
                 break;
             case SceneManager.Players.PLAYER2:
                 BuildingPanel2.Show();
                 BuildingPanel1.Hide();
-	            FortifyPlayerText.text = "Player 2";
-	            UpdateBuildingMaterialUI(player);
+                FortifyPlayerText.text = "Player 2";
+                UpdateBuildingMaterialUI(player);
                 break;
         }
 
-	    FortifyPanel.Hide();
+        FortifyPanel.Hide();
 
     }
-    
-	public void UpdateBuildingMaterialUI(SceneManager.Players player)
-	{
-		SceneManager sm = this.GetComponent<SceneManager>();
-		
-		WoodContainer1.DisableButton();
-		WoodContainer2.DisableButton();
-		
-		switch (player)
-		{
-		case SceneManager.Players.PLAYER1:
-			WoodCountText1.text = "x" + sm.Player1_WoodCount.ToString();
-			SheetCountText1.text = "x" + sm.Player1_SheetCount.ToString();
-			if(sm.Player1_WoodCount > 0){
-				WoodContainer1.EnableButton();
-			}
-			else{
-				WoodContainer1.DisableButton();
-			}
-			if(sm.Player1_SheetCount > 0){
-				SheetContainer1.EnableButton();
-			}
-			else{
-				SheetContainer1.DisableButton();
-			}
-			break;
-		case SceneManager.Players.PLAYER2:
-			WoodCountText2.text = "x" + sm.Player2_WoodCount.ToString();
-			SheetCountText2.text = "x" + sm.Player2_SheetCount.ToString();
-			if(sm.Player2_WoodCount > 0){
-				WoodContainer2.EnableButton();
-			}
-			else{
-				WoodContainer2.DisableButton();
-			}
-			if(sm.Player2_SheetCount > 0){
-				SheetContainer2.EnableButton();
-			}
-			else{
-				SheetContainer2.DisableButton();
-			}
-			break;
-		}
-	}
+
+    public void UpdateBuildingMaterialUI(SceneManager.Players player)
+    {
+        SceneManager sm = this.GetComponent<SceneManager>();
+
+        switch (player)
+        {
+            case SceneManager.Players.PLAYER1:
+                WoodCountText1.text = "x" + sm.Player1_WoodCount.ToString();
+                SheetCountText1.text = "x" + sm.Player1_SheetCount.ToString();
+                PillowCountText1.text = "x" + sm.Player1_PillowCount.ToString();
+                if (sm.Player1_WoodCount > 0)
+                {
+                    WoodContainer1.EnableButton();
+                }
+                else
+                {
+                    WoodContainer1.DisableButton();
+                    WoodContainer1.StopNormalLoopAnimation();
+                }
+                if (sm.Player1_SheetCount > 0)
+                {
+                    SheetContainer1.EnableButton();
+                }
+                else
+                {
+                    SheetContainer1.DisableButton();
+                    SheetContainer1.StopNormalLoopAnimation();
+                }
+                if (sm.Player1_PillowCount > 0)
+                {
+                    PillowContainer1.EnableButton();
+                }
+                else
+                {
+                    PillowContainer1.DisableButton();
+                    PillowContainer1.StopNormalLoopAnimation();
+                }
+                break;
+            case SceneManager.Players.PLAYER2:
+                WoodCountText2.text = "x" + sm.Player2_WoodCount.ToString();
+                SheetCountText2.text = "x" + sm.Player2_SheetCount.ToString();
+                PillowCountText2.text = "x" + sm.Player2_PillowCount.ToString();
+                if (sm.Player2_WoodCount > 0)
+                {
+                    WoodContainer2.EnableButton();
+                }
+                else
+                {
+                    WoodContainer2.DisableButton();
+                    WoodContainer2.StopNormalLoopAnimation();
+                }
+                if (sm.Player2_SheetCount > 0)
+                {
+                    SheetContainer2.EnableButton();
+                }
+                else
+                {
+                    SheetContainer2.DisableButton();
+                    SheetContainer2.StopNormalLoopAnimation();
+                }
+                if (sm.Player2_PillowCount > 0)
+                {
+                    PillowContainer2.EnableButton();
+                }
+                else
+                {
+                    PillowContainer2.DisableButton();
+                    PillowContainer2.StopNormalLoopAnimation();
+                }
+                break;
+        }
+    }
 
     public void SetThrowingUI(SceneManager.Players player)
-	{
-		SceneManager sm = this.GetComponent<SceneManager>();
+    {
+        SceneManager sm = this.GetComponent<SceneManager>();
 
         BuildingPanel1.Hide();
         BuildingPanel2.Hide();
 
         ThrowingPanel.Show();
 
+        UpdateFruitUI(player);
+    }
+
+    public void UpdateFruitUI(SceneManager.Players player)
+    {
+
+        SceneManager sm = this.GetComponent<SceneManager>();
+
         switch (player)
         {
             case SceneManager.Players.PLAYER1:
                 FortifyPlayerText.text = "Player 1";
-	            Player1Panel.SetActive(true);
-	            Player2Panel.SetActive(false);
-	            AppleCount1.text = "x" + sm.Player1_AppleCount.ToString();
-	            if(sm.Player1_AppleCount > 0){
-	            	AppleContainer1.EnableButton();
-	            }
-	            else{
-	            	AppleContainer1.DisableButton();
-	            }
+                Player1Panel.SetActive(true);
+                Player2Panel.SetActive(false);
+                AppleCount1.text = "x" + sm.Player1_AppleCount.ToString();
+                if (sm.Player1_AppleCount > 0)
+                {
+                    AppleContainer1.EnableButton();
+                }
+                else
+                {
+                    AppleContainer1.DisableButton();
+                }
                 break;
             case SceneManager.Players.PLAYER2:
                 FortifyPlayerText.text = "Player 2";
                 Player1Panel.SetActive(false);
-	            Player2Panel.SetActive(true);
-	            AppleCount1.text = "x" + sm.Player2_AppleCount.ToString();
-	            if(sm.Player2_AppleCount > 0){
-	            	AppleContainer2.EnableButton();
-	            }
-	            else{
-	            	AppleContainer2.DisableButton();
-	            }
+                Player2Panel.SetActive(true);
+                AppleCount2.text = "x" + sm.Player2_AppleCount.ToString();
+                if (sm.Player2_AppleCount > 0)
+                {
+                    AppleContainer2.EnableButton();
+                }
+                else
+                {
+                    AppleContainer2.DisableButton();
+                }
                 break;
         }
-	}
-    
-	public void UpdateFruitUI(SceneManager.Players player){
-		
-		SceneManager sm = this.GetComponent<SceneManager>();
-		
-		switch (player)
-		{
-		case SceneManager.Players.PLAYER1:
-			FortifyPlayerText.text = "Player 1";
-			Player1Panel.SetActive(true);
-			Player2Panel.SetActive(false);
-			AppleCount1.text = "x" + sm.Player1_AppleCount.ToString();
-			if(sm.Player1_AppleCount > 0){
-				AppleContainer1.EnableButton();
-			}
-			else{
-				AppleContainer1.DisableButton();
-			}
-			break;
-		case SceneManager.Players.PLAYER2:
-			FortifyPlayerText.text = "Player 2";
-			Player1Panel.SetActive(false);
-			Player2Panel.SetActive(true);
-			AppleCount1.text = "x" + sm.Player2_AppleCount.ToString();
-			if(sm.Player2_AppleCount > 0){
-				AppleContainer2.EnableButton();
-			}
-			else{
-				AppleContainer2.DisableButton();
-			}
-			break;
-		}
-	}
+    }
 
     public void SetPlayerHealth()
     {
@@ -205,12 +217,10 @@ public class UIManager : MonoBehaviour
 
     public void ShowWinPanel(SceneManager.Players player)
     {
-	    FortifyPanel.Hide();
+        FortifyPanel.Hide();
         BuildingPanel1.Hide();
         BuildingPanel2.Hide();
-        HealthPanel.SetActive(false);
         ThrowingPanel.Hide();
-        ActivePlayerPanel.SetActive(false);
 
         switch (player)
         {
