@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitDamage: 50
-  fruitType: 0
+  fruitType: 2
 --- !u!114 &3579114803549311937
 MonoBehaviour:
   m_ObjectHideFlags: 0

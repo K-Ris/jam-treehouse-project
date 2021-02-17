@@ -45,6 +45,8 @@ namespace Treehouse
 	    public int Player2_CerryCount = 3;
 	    public int Player2_MelonCount = 1;
 
+        private IEnumerator coroutineTimer;
+
         void Start()
         {
             um = this.GetComponent<UIManager>();
@@ -70,6 +72,8 @@ namespace Treehouse
         public void StartBuilding()
         {
             um.SetBuildingUI(activePlayer);
+
+            StartTimer();
         }
 
         public void FinishBuilding()
@@ -90,10 +94,15 @@ namespace Treehouse
 
                 firstBuilder = true;
                 um.SetBuildingUI(activePlayer);
+
+                StartTimer();
             }
             else
             {
                 //start throwing loop
+                if (coroutineTimer != null)
+                    StopCoroutine(coroutineTimer);
+
                 ThrowingTurn();
             }
 
@@ -118,7 +127,23 @@ namespace Treehouse
 			    this.GetComponent<PickupSpawner>().SpawnRandomPickup(activePlayer);
 		    	
 			    um.SetThrowingUI(activePlayer);
-		    }
+
+                switch (activePlayer)
+                {
+                    case Players.PLAYER1:
+                        if(Player1_AppleCount == 0 && Player1_CerryCount == 0 && Player1_MelonCount == 0 && this.GetComponent<PickupSpawner>().currentPickup == null)
+                        {
+                            HitHandling();
+                        }
+                        break;
+                    case Players.PLAYER2:
+                        if (Player2_AppleCount == 0 && Player2_CerryCount == 0 && Player2_MelonCount == 0 && this.GetComponent<PickupSpawner>().currentPickup == null)
+                        {
+                            HitHandling();
+                        }
+                        break;
+                }
+            }
 
         }
 
@@ -149,6 +174,33 @@ namespace Treehouse
         public void Replay()
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+        }
+
+        public void StartTimer()
+        {
+            if (coroutineTimer != null)
+                StopCoroutine(coroutineTimer);
+
+            coroutineTimer = DoStartTimer();
+
+            StartCoroutine(coroutineTimer);
+        }
+
+        IEnumerator DoStartTimer()
+        {
+            Debug.Log("Timer");
+
+            for(int i = 30; i > 0; i--)
+            {
+                Debug.Log(i);
+
+                um.SetTimerPanel(activePlayer, i);
+
+                yield return new WaitForSecondsRealtime(1f);
+
+            }
+
+            FinishBuilding();
         }
         
 	    public void ThrowFruit(FruitHandler.FruitType fruit){
@@ -229,7 +281,7 @@ namespace Treehouse
 
         IEnumerator HandleHitCo()
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(4);
 
             //remove fruit
             //end turn

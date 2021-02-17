@@ -12,7 +12,7 @@ public class PickupSpawner : MonoBehaviour
 	public Transform PickupPos1;
 	public Transform PickupPos2;
 	
-	GameObject currentPickup;
+	public GameObject currentPickup;
 	
     
 	public void SpawnRandomPickup(SceneManager.Players player){
@@ -28,6 +28,8 @@ public class PickupSpawner : MonoBehaviour
 			break;
 			
 		}
+
+		RemovePickup();
 		
 		int rand = Random.Range(0, 8);
 		
@@ -40,12 +42,10 @@ public class PickupSpawner : MonoBehaviour
 		else if(rand == 7){
 			currentPickup = Instantiate(MelonPickup, PickupPos.position, Quaternion.identity);
 		}
-		else{
-			RemovePickup();
-		}
 	}
 	
 	public void RemovePickup(){
 		Destroy(currentPickup);
+		currentPickup = null;
 	}
 }

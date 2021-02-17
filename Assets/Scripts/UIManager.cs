@@ -20,6 +20,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] UIButton PillowContainer1;
     [SerializeField] Text PillowCountText1;
 
+    [SerializeField] GameObject TimerPanel1;
+    [SerializeField] Text TimerText1;
+
     [SerializeField] UIView BuildingPanel2;
     [SerializeField] UIButton WoodContainer2;
     [SerializeField] Text WoodCountText2;
@@ -27,6 +30,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text SheetCountText2;
     [SerializeField] UIButton PillowContainer2;
     [SerializeField] Text PillowCountText2;
+
+    [SerializeField] GameObject TimerPanel2;
+    [SerializeField] Text TimerText2;
 
     [SerializeField] UIView ThrowingPanel;
     [SerializeField] GameObject Player1Panel;
@@ -172,6 +178,8 @@ public class UIManager : MonoBehaviour
 
         SceneManager sm = this.GetComponent<SceneManager>();
 
+        Debug.Log(player);
+
         switch (player)
         {
             case SceneManager.Players.PLAYER1:
@@ -239,6 +247,21 @@ public class UIManager : MonoBehaviour
 	            }
                 break;
         }
+    }
+
+    public void SetTimerPanel(SceneManager.Players player, int time)
+    {
+        switch (player)
+        {
+            case SceneManager.Players.PLAYER1:
+                TimerPanel1.SetActive(true);
+                TimerText1.text = time.ToString();
+                break;
+            case SceneManager.Players.PLAYER2:
+                TimerPanel2.SetActive(true);
+                TimerText2.text = time.ToString();
+                break;
+        } 
     }
 
     public void SetPlayerHealth()

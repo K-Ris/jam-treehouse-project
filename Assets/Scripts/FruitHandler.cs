@@ -31,6 +31,10 @@ public class FruitHandler : MonoBehaviour
 
             DestroyFruit();
         }
+        else if (collision.transform.CompareTag("Fruit"))
+        {
+
+        }
         else
         {
             DestroyFruit();
@@ -52,7 +56,7 @@ public class FruitHandler : MonoBehaviour
     {
 	    yield return new WaitForSeconds(0.03f);
 
-        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
+        //GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
         Destroy(this.gameObject);
     }
 }

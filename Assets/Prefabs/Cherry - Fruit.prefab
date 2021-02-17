@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5330947375934531724}
   - component: {fileID: 5330947375934531727}
   - component: {fileID: 4581250381099028979}
+  - component: {fileID: 8954444207562911617}
   - component: {fileID: 5330947375934531721}
   - component: {fileID: 5330947375934531726}
   m_Layer: 0
@@ -127,7 +128,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitDamage: 10
-  fruitType: 0
+  fruitType: 1
+--- !u!114 &8954444207562911617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5330947375934531720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4928514ee372b145b47323818fdb574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CherrySingle: {fileID: 9046869034477467581, guid: d0d0c3af177988c48a9bc834fbe542d2,
+    type: 3}
 --- !u!114 &5330947375934531721
 MonoBehaviour:
   m_ObjectHideFlags: 0

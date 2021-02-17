@@ -75,6 +75,7 @@ public class FollowMouse : MonoBehaviour
 
     }
 
+
     private void FixedUpdate()
     {
         this.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;

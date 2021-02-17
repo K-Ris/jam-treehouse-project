@@ -64,11 +64,18 @@ public class FruitDrag : MonoBehaviour
                 0,
                 Mathf.Clamp(startpoint.y - endpoint.y, minimumpower.y, maximumpower.y),
                 Mathf.Clamp(startpoint.z - endpoint.z, minimumpower.z, maximumpower.z));
-        rb.AddForce(throwforce * ThrowPower, ForceMode.Impulse);
+        Vector3 throwCombined = throwforce * ThrowPower;
+        rb.AddForce(throwCombined, ForceMode.Impulse);
         //Debug.Log("x: " + throwforce.x + " y " + throwforce.y + " z " + throwforce.z);
         rb.AddTorque(transform.forward * torque * (throwforce.y * 10f));
         rb.useGravity = true;
         GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().ThrowFruit(this.GetComponent<FruitHandler>().fruitType);
+
+        if (this.GetComponent<FruitHandler>().fruitType == FruitHandler.FruitType.CHERRY)
+            this.GetComponent<CherryHandler>().CherryExplode(throwCombined);
+
+        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
+
         EndLine();
     }
 
