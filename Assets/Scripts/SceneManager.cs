@@ -131,13 +131,13 @@ namespace Treehouse
                 switch (activePlayer)
                 {
                     case Players.PLAYER1:
-                        if(Player1_AppleCount == 0 && Player1_CerryCount == 0 && Player1_MelonCount == 0 && this.GetComponent<PickupSpawner>().currentPickup == null)
+                        if(Player1_AppleCount < 1 && Player1_CerryCount < 1 && Player1_MelonCount < 1 && this.GetComponent<PickupSpawner>().currentPickup == null)
                         {
                             HitHandling();
                         }
                         break;
                     case Players.PLAYER2:
-                        if (Player2_AppleCount == 0 && Player2_CerryCount == 0 && Player2_MelonCount == 0 && this.GetComponent<PickupSpawner>().currentPickup == null)
+                        if (Player2_AppleCount < 1 && Player2_CerryCount < 1 && Player2_MelonCount < 1 && this.GetComponent<PickupSpawner>().currentPickup == null)
                         {
                             HitHandling();
                         }
@@ -192,7 +192,7 @@ namespace Treehouse
 
             for(int i = 30; i > 0; i--)
             {
-                Debug.Log(i);
+                //Debug.Log(i);
 
                 um.SetTimerPanel(activePlayer, i);
 

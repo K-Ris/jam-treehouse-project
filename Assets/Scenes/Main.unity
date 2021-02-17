@@ -15,9 +15,9 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.5803222, g: 0.6807659, b: 0.764151, a: 1}
+  m_FogColor: {r: 0.6226415, g: 0.5226212, b: 0.47872907, a: 1}
   m_FogMode: 2
-  m_FogDensity: 0.01
+  m_FogDensity: 0.05
   m_LinearFogStart: 5.59
   m_LinearFogEnd: 33.93
   m_AmbientSkyColor: {r: 0.58431375, g: 0.65351677, b: 0.7254902, a: 1}
@@ -33525,18 +33525,18 @@ MonoBehaviour:
   Player2Anim: {fileID: 114046354}
   HealthPlayer1_max: 1
   HealthPlayer1_cur: 1
-  Player1_WoodCount: 6
-  Player1_SheetCount: 3
-  Player1_PillowCount: 2
-  Player1_AppleCount: 0
-  Player1_CerryCount: 1
+  Player1_WoodCount: 5
+  Player1_SheetCount: 2
+  Player1_PillowCount: 1
+  Player1_AppleCount: 5
+  Player1_CerryCount: 0
   Player1_MelonCount: 0
   HealthPlayer2_max: 1
   HealthPlayer2_cur: 1
-  Player2_WoodCount: 6
-  Player2_SheetCount: 3
-  Player2_PillowCount: 2
-  Player2_AppleCount: 4
+  Player2_WoodCount: 5
+  Player2_SheetCount: 2
+  Player2_PillowCount: 1
+  Player2_AppleCount: 5
   Player2_CerryCount: 0
   Player2_MelonCount: 0
 --- !u!1 &602276869
@@ -42413,8 +42413,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -105}
-  m_SizeDelta: {x: 400, y: 150}
+  m_AnchoredPosition: {x: 0, y: -85}
+  m_SizeDelta: {x: 400, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &945758390
 MonoBehaviour:
@@ -70223,8 +70223,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -105}
-  m_SizeDelta: {x: 400, y: 150}
+  m_AnchoredPosition: {x: 0, y: -85}
+  m_SizeDelta: {x: 400, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806347203
 MonoBehaviour:
