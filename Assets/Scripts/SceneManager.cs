@@ -100,8 +100,10 @@ namespace Treehouse
         }
 
         public void ThrowingTurn()
-        {
+	    {
+		    this.GetComponent<PickupSpawner>().RemovePickup();
 
+        	
             switch (activePlayer)
             {
                 case Players.PLAYER1:
@@ -112,8 +114,11 @@ namespace Treehouse
                     break;
             }
 
-            if(HealthPlayer1_cur > 0 && HealthPlayer2_cur > 0)
-                um.SetThrowingUI(activePlayer);
+		    if(HealthPlayer1_cur > 0 && HealthPlayer2_cur > 0){
+			    this.GetComponent<PickupSpawner>().SpawnRandomPickup(activePlayer);
+		    	
+			    um.SetThrowingUI(activePlayer);
+		    }
 
         }
 
@@ -181,7 +186,41 @@ namespace Treehouse
 
             um.UpdateFruitUI(activePlayer);
 
-        }
+	    }
+        
+	    public void AddFruit(FruitHandler.FruitType type){
+	    	
+	    	switch(activePlayer){
+	    	case Players.PLAYER1:
+		    	switch(type){
+		    	case FruitHandler.FruitType.APPLE:
+			    	Player1_AppleCount++;
+			    	break;
+		    	case FruitHandler.FruitType.CHERRY:
+			    	Player1_CerryCount++;
+			    	break;
+		    	case FruitHandler.FruitType.MELONE:
+			    	Player1_MelonCount++;
+			    	break;
+		    	}
+		    	break;
+	    	case Players.PLAYER2:
+		    	switch(type){
+		    	case FruitHandler.FruitType.APPLE:
+			    	Player2_AppleCount++;
+			    	break;
+		    	case FruitHandler.FruitType.CHERRY:
+			    	Player2_CerryCount++;
+			    	break;
+		    	case FruitHandler.FruitType.MELONE:
+			    	Player2_MelonCount++;
+			    	break;
+		    	}
+		    	break;
+	    	}
+	    	
+	    	um.UpdateFruitUI(activePlayer);
+	    }
 
         public void HitHandling()
         {

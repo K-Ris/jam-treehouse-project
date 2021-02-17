@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class FollowMouse : MonoBehaviour
 {
-    bool isFollowing = false;
+	bool isFollowing = false;
+	
+	float temps;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+	    temps = Time.time; // initialising time
     }
 
     // Update is called once per frame
@@ -28,7 +30,7 @@ public class FollowMouse : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 1000.0f))
+	        if (Physics.Raycast(ray, out hit, 200.0f))
             {
                 Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
                 if (hit.transform.CompareTag("Preview"))
@@ -55,12 +57,21 @@ public class FollowMouse : MonoBehaviour
             //this.transform.localEulerAngles = Vector3.zero;
             //isFollowing = true;
         }
+        
+	    if(Input.GetMouseButtonDown(0)){
+	    	temps = Time.time;
+	    }
+	    
+	    if( Input.GetMouseButtonUp(0) && (Time.time - temps) < 0.3f ){
+	    	GameObject.FindGameObjectWithTag("SceneManager").GetComponent<BuildingHandler>().RotateBlock();
+	    }
 
         if (Input.GetMouseButtonUp(0))
         {
             isFollowing = false;
             
         }
+        
 
     }
 

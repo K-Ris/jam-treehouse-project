@@ -50,7 +50,7 @@ public class FruitHandler : MonoBehaviour
 
     IEnumerator DoDestroyFruit()
     {
-        yield return new WaitForSeconds(0.05f);
+	    yield return new WaitForSeconds(0.03f);
 
         GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
         Destroy(this.gameObject);

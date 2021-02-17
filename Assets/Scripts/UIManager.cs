@@ -31,11 +31,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] UIView ThrowingPanel;
     [SerializeField] GameObject Player1Panel;
     [SerializeField] UIButton AppleContainer1;
-    [SerializeField] Text AppleCount1;
+	[SerializeField] Text AppleCount1;
+	[SerializeField] UIButton CherryContainer1;
+	[SerializeField] Text CherryCount1;
+	[SerializeField] UIButton MelonContainer1;
+	[SerializeField] Text MelonCount1;
 
     [SerializeField] GameObject Player2Panel;
     [SerializeField] UIButton AppleContainer2;
-    [SerializeField] Text AppleCount2;
+	[SerializeField] Text AppleCount2;
+	[SerializeField] UIButton CherryContainer2;
+	[SerializeField] Text CherryCount2;
+	[SerializeField] UIButton MelonContainer2;
+	[SerializeField] Text MelonCount2;
 
     [SerializeField] GameObject HealthPanel;
     [SerializeField] Image Player1Health;
@@ -179,6 +187,24 @@ public class UIManager : MonoBehaviour
                 {
                     AppleContainer1.DisableButton();
                 }
+	            CherryCount1.text = "x" + sm.Player1_CerryCount.ToString();
+	            if (sm.Player1_CerryCount > 0)
+	            {
+		            CherryContainer1.EnableButton();
+	            }
+	            else
+	            {
+		            CherryContainer1.DisableButton();
+	            }
+	            MelonCount1.text = "x" + sm.Player1_MelonCount.ToString();
+	            if (sm.Player1_MelonCount > 0)
+	            {
+		            MelonContainer1.EnableButton();
+	            }
+	            else
+	            {
+		            MelonContainer1.DisableButton();
+	            }
                 break;
             case SceneManager.Players.PLAYER2:
                 FortifyPlayerText.text = "Player 2";
@@ -193,6 +219,24 @@ public class UIManager : MonoBehaviour
                 {
                     AppleContainer2.DisableButton();
                 }
+	            CherryCount2.text = "x" + sm.Player2_CerryCount.ToString();
+	            if (sm.Player2_CerryCount > 0)
+	            {
+		            CherryContainer2.EnableButton();
+	            }
+	            else
+	            {
+		            CherryContainer2.DisableButton();
+	            }
+	            MelonCount2.text = "x" + sm.Player2_MelonCount.ToString();
+	            if (sm.Player2_MelonCount > 0)
+	            {
+		            MelonContainer2.EnableButton();
+	            }
+	            else
+	            {
+		            MelonContainer2.DisableButton();
+	            }
                 break;
         }
     }
