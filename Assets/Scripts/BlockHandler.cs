@@ -6,6 +6,10 @@ public class BlockHandler : MonoBehaviour
 {
     public int blockHealth = 50;
 	public int blockHealth_cur = 50;
+	public int breakingHealth = 25;
+	
+	public MeshRenderer meshRend;
+	public Material brokenMat;
     
 	public BlockType blockType;
 
@@ -35,6 +39,15 @@ public class BlockHandler : MonoBehaviour
         if (blockHealth_cur <= 0)
         {
             Destroy(this.gameObject);
+        }
+        
+	    if(blockHealth_cur < breakingHealth){
+        	
+        	if(brokenMat != null){
+        		Material [] materials = meshRend.materials;
+        		materials[0] = brokenMat;
+        		meshRend.materials = materials;
+        	}
         }
     }
     

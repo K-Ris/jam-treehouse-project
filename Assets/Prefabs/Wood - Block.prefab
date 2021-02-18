@@ -126,6 +126,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockHealth: 50
   blockHealth_cur: 50
+  breakingHealth: 25
+  meshRend: {fileID: 4932290086769630566}
+  brokenMat: {fileID: 2100000, guid: 7961577d3fa6d498d9b0b3364278884d, type: 2}
   blockType: 0
 --- !u!114 &-7713762774312693206
 MonoBehaviour:

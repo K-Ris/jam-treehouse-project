@@ -116,6 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7829708690247163313}
+  - component: {fileID: -940823312253583977}
   m_Layer: 0
   m_Name: Cherry-Pickup
   m_TagString: Untagged
@@ -138,3 +139,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &-940823312253583977
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7485939419447871243}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: aeec607044626449494a04d6ce3757ad, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: aeec607044626449494a04d6ce3757ad, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

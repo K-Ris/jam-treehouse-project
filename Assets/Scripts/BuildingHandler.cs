@@ -13,13 +13,123 @@ public class BuildingHandler : MonoBehaviour
 
 	SceneManager sm;
 	UIManager um;
+	
+	float clicked = 0;
+	float clicktime = 0;
+	float clickdelay = 0.5f;
+	
 
+	Vector2 firstPressPos;
+	Vector2 secondPressPos;
+	Vector2 currentSwipe;
+	
+	public bool swipeblock = false;
 
     void Start()
     {
 	    sm = this.GetComponent<SceneManager>();
 	    um = this.GetComponent<UIManager>();
     }
+    
+	private void Update()
+	{
+		SwipeTouch();
+		Swipe();
+		
+		if(Input.GetMouseButtonDown(0)){
+			
+			clicked++;
+			if (clicked == 1) clicktime = Time.time;
+			
+ 
+			if (clicked > 1 && Time.time - clicktime < clickdelay)
+			{
+				clicked = 0;
+				clicktime = 0;
+				SetBlock();
+ 
+			}
+		}
+		
+		if (clicked > 2 || Time.time - clicktime > (clickdelay + 0.1f)) clicked = 0;
+ 
+	}
+	
+ 
+	public void SwipeTouch()
+	{
+		if(!swipeblock){
+			
+			if(Input.touches.Length > 0)
+			{
+				Touch t = Input.GetTouch(0);
+				if(t.phase == TouchPhase.Began)
+				{
+					//save began touch 2d point
+					firstPressPos = new Vector2(t.position.x,t.position.y);
+				}
+				if(t.phase == TouchPhase.Ended)
+				{
+					//save ended touch 2d point
+					secondPressPos = new Vector2(t.position.x,t.position.y);
+                           
+					//create vector from the two points
+					currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
+               
+					//normalize the 2d vector
+					currentSwipe.Normalize();
+ 
+					//swipe left
+					if(currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+					{
+						Debug.Log("left swipe");
+						RotateBlockLeft();
+					}
+					//swipe right
+					if(currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+					{
+						Debug.Log("right swipe");
+						RotateBlockRight();
+					}
+				}
+			}
+		}
+	}
+ 
+	public void Swipe()
+	{
+		if(!swipeblock){
+			if(Input.GetMouseButtonDown(0))
+			{
+				//save began touch 2d point
+				firstPressPos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
+			}
+			if(Input.GetMouseButtonUp(0))
+			{
+				//save ended touch 2d point
+				secondPressPos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
+       
+				//create vector from the two points
+				currentSwipe = new Vector2(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
+           
+				//normalize the 2d vector
+				currentSwipe.Normalize();
+ 
+				//swipe left
+				if(currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+				{
+					Debug.Log("left swipe");
+					RotateBlockLeft();
+				}
+				//swipe right
+				if(currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+				{
+					Debug.Log("right swipe");
+					RotateBlockRight();
+				}
+			}
+		}
+	}
 
     public void BuildWood()
     {
@@ -91,10 +201,16 @@ public class BuildingHandler : MonoBehaviour
 	}
 	
 
-    public void RotateBlock()
-    {
-        currentBlock.transform.Rotate(90, 0, 0);
-    }
+	public void RotateBlockRight()
+	{
+		if(currentBlock != null)
+			currentBlock.transform.Rotate(-90, 0, 0);
+	}
+    
+	public void RotateBlockLeft(){
+		if(currentBlock != null)
+			currentBlock.transform.Rotate(90, 0, 0);
+	}
 
     public void SetBlock()
 	{

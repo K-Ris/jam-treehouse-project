@@ -28,6 +28,8 @@ public class FollowMouse : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
+        	
+        	
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 	        if (Physics.Raycast(ray, out hit, 200.0f))
@@ -35,6 +37,7 @@ public class FollowMouse : MonoBehaviour
                 Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
                 if (hit.transform.CompareTag("Preview"))
                 {
+                	GameObject.FindGameObjectWithTag("SceneManager").GetComponent<BuildingHandler>().swipeblock = true;
                     isFollowing = true;
                 }
                     
@@ -62,12 +65,14 @@ public class FollowMouse : MonoBehaviour
 	    	temps = Time.time;
 	    }
 	    
-	    if( Input.GetMouseButtonUp(0) && (Time.time - temps) < 0.3f ){
-	    	GameObject.FindGameObjectWithTag("SceneManager").GetComponent<BuildingHandler>().RotateBlock();
-	    }
+	    //if( Input.GetMouseButtonUp(0) && (Time.time - temps) < 0.3f ){
+	    //	GameObject.FindGameObjectWithTag("SceneManager").GetComponent<BuildingHandler>().RotateBlock();
+	    //}
 
         if (Input.GetMouseButtonUp(0))
         {
+	        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<BuildingHandler>().swipeblock = false;
+
             isFollowing = false;
             
         }

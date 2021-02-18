@@ -15,7 +15,10 @@ namespace Treehouse
         public GameObject Player1;
         public Animator Player1Anim;
         public GameObject Player2;
-        public Animator Player2Anim;
+	    public Animator Player2Anim;
+        
+	    [Header("Building Timer")]
+	    public int TimerTime = 40;
 	    
 	    [Header("Player 1 Health")]
         public int HealthPlayer1_max = 100;
@@ -190,7 +193,7 @@ namespace Treehouse
         {
             Debug.Log("Timer");
 
-            for(int i = 30; i > 0; i--)
+            for(int i = TimerTime; i > 0; i--)
             {
                 //Debug.Log(i);
 

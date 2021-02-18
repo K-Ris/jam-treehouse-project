@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Metal 01_baseColor
-  m_Shader: {fileID: 10704, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
+  m_Name: Wood_Broken
+  m_Shader: {fileID: 100, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,9 +20,13 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 265d6d79de7958446bec2bde26925a7c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 79b95aced14353c4aa43d47182184789, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DecalTex:
+        m_Texture: {fileID: 2800000, guid: 7e1127edfc6524d9d895fb10cfe36ee0, type: 3}
+        m_Scale: {x: 0.43, y: 0.11}
+        m_Offset: {x: -0.59, y: -0.67}
     - _DetailAlbedoMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -37,11 +41,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 1.76, y: -0.3}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b6340f7c08a0bdc4f9b1f538ec54446c, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: e17779e42a606f74ab426f71d1af7c56, type: 3}
+        m_Scale: {x: 1.89, y: -0.3}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
