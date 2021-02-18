@@ -150,7 +150,7 @@ public class BuildingHandler : MonoBehaviour
 	            //difZ = -4;
                 break;
         }
-        GameObject go = Instantiate(wood, new Vector3(difX, 6, 0), Quaternion.identity);
+	    GameObject go = Instantiate(wood, new Vector3(difX, 3, 0), Quaternion.identity);
 	    currentBlock = go;
     }
     
@@ -173,7 +173,7 @@ public class BuildingHandler : MonoBehaviour
 			//difZ = -4;
 			break;
 		}
-		GameObject go = Instantiate(sheet, new Vector3(difX, 6, 0), Quaternion.identity);
+		GameObject go = Instantiate(sheet, new Vector3(difX, 3, 0), Quaternion.identity);
 		currentBlock = go;
 	}
 	
@@ -196,7 +196,7 @@ public class BuildingHandler : MonoBehaviour
 			//difZ = -4;
 			break;
 		}
-		GameObject go = Instantiate(pillow, new Vector3(difX, 6, 0), Quaternion.identity);
+		GameObject go = Instantiate(pillow, new Vector3(difX, 2, 0), Quaternion.identity);
 		currentBlock = go;
 	}
 	

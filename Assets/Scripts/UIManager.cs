@@ -56,7 +56,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image Player2Health;
 
     [SerializeField] UIView WinPanel;
-    [SerializeField] Text WinnerText;
+	[SerializeField] Text WinnerText;
+    
+	public Animator CamPiv;
 
 
     public void SetFortifyUI()
@@ -74,13 +76,17 @@ public class UIManager : MonoBehaviour
                 BuildingPanel1.Show();
                 BuildingPanel2.Hide();
                 FortifyPlayerText.text = "Player 1";
-                UpdateBuildingMaterialUI(player);
+	            UpdateBuildingMaterialUI(player);
+	            CamPiv.SetBool("ShowPlayer2", false);
+	            CamPiv.SetBool("ShowPlayer1", true);
                 break;
             case SceneManager.Players.PLAYER2:
                 BuildingPanel2.Show();
                 BuildingPanel1.Hide();
                 FortifyPlayerText.text = "Player 2";
-                UpdateBuildingMaterialUI(player);
+	            UpdateBuildingMaterialUI(player);
+	            CamPiv.SetBool("ShowPlayer1", false);
+	            CamPiv.SetBool("ShowPlayer2", true);
                 break;
         }
 
@@ -172,6 +178,15 @@ public class UIManager : MonoBehaviour
 
         UpdateFruitUI(player);
     }
+    
+	public void DisableAllFruits(){
+		AppleContainer1.DisableButton();
+		AppleContainer2.DisableButton();
+		CherryContainer1.DisableButton();
+		CherryContainer2.DisableButton();
+		MelonContainer1.DisableButton();
+		MelonContainer2.DisableButton();
+	}
 
     public void UpdateFruitUI(SceneManager.Players player)
     {
@@ -213,6 +228,8 @@ public class UIManager : MonoBehaviour
 	            {
 		            MelonContainer1.DisableButton();
 	            }
+	            CamPiv.SetBool("ShowPlayer1", true);
+	            CamPiv.SetBool("ShowPlayer2", false);
                 break;
             case SceneManager.Players.PLAYER2:
                 FortifyPlayerText.text = "Player 2";
@@ -245,6 +262,8 @@ public class UIManager : MonoBehaviour
 	            {
 		            MelonContainer2.DisableButton();
 	            }
+	            CamPiv.SetBool("ShowPlayer2", true);
+	            CamPiv.SetBool("ShowPlayer1", false);
                 break;
         }
     }
@@ -287,7 +306,10 @@ public class UIManager : MonoBehaviour
         FortifyPanel.Hide();
         BuildingPanel1.Hide();
         BuildingPanel2.Hide();
-        ThrowingPanel.Hide();
+	    ThrowingPanel.Hide();
+        
+	    CamPiv.SetBool("ShowPlayer1", false);
+	    CamPiv.SetBool("ShowPlayer2", false);
 
         switch (player)
         {

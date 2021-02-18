@@ -74,7 +74,10 @@ public class FruitDrag : MonoBehaviour
         if (this.GetComponent<FruitHandler>().fruitType == FruitHandler.FruitType.CHERRY)
             this.GetComponent<CherryHandler>().CherryExplode(throwCombined);
 
-        GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().HitHandling();
+	    GameObject sm = GameObject.FindGameObjectWithTag("SceneManager");
+
+	    sm.GetComponent<SceneManager>().HitHandling();
+	    sm.GetComponent<UIManager>().DisableAllFruits();
 
         EndLine();
     }

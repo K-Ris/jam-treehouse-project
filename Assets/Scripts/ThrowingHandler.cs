@@ -14,15 +14,18 @@ public class ThrowingHandler : MonoBehaviour
 
     public GameObject currentThrowing;
 
-    SceneManager sm;
+	SceneManager sm;
+	PickupSpawner ps;
 
     void Start()
     {
-        sm = this.GetComponent<SceneManager>();
+	    sm = this.GetComponent<SceneManager>();
+	    ps = this.GetComponent<PickupSpawner>();
     }
 
     public void EquipApple()
-    {
+	{
+		ps.RemovePickup();
         switch (sm.activePlayer)
         {
             case SceneManager.Players.PLAYER1:
@@ -37,6 +40,7 @@ public class ThrowingHandler : MonoBehaviour
     }
     
 	public void EquipCherry(){
+		ps.RemovePickup();
 		switch (sm.activePlayer)
 		{
 		case SceneManager.Players.PLAYER1:
@@ -51,6 +55,7 @@ public class ThrowingHandler : MonoBehaviour
 	}
 	
 	public void EquipMelon(){
+		ps.RemovePickup();
 		switch (sm.activePlayer)
 		{
 		case SceneManager.Players.PLAYER1:
