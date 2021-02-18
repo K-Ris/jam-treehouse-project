@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickupType: 2
+  MainObject: {fileID: 2138468231791779678}
 --- !u!1001 &86182289453641194
 PrefabInstance:
   m_ObjectHideFlags: 0

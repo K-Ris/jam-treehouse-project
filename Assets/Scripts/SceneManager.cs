@@ -114,6 +114,7 @@ namespace Treehouse
         public void ThrowingTurn()
 	    {
 		    this.GetComponent<PickupSpawner>().RemovePickup();
+            this.GetComponent<ThrowingHandler>().RemoveThrowable();
 
         	
             switch (activePlayer)
@@ -162,7 +163,7 @@ namespace Treehouse
                     break;
             }
 
-            um.SetPlayerHealth();
+            //um.SetPlayerHealth();
 
             if (HealthPlayer1_cur <= 0)
             {

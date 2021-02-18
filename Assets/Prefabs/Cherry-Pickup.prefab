@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickupType: 1
+  MainObject: {fileID: 7485939419447871243}
 --- !u!1 &7485939419447871243
 GameObject:
   m_ObjectHideFlags: 0

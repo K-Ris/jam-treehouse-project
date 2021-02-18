@@ -23,6 +23,12 @@ public class ThrowingHandler : MonoBehaviour
 	    ps = this.GetComponent<PickupSpawner>();
     }
 
+	public void RemoveThrowable()
+    {
+		Destroy(currentThrowing);
+		currentThrowing = null;
+    }
+
     public void EquipApple()
 	{
 		ps.RemovePickup();

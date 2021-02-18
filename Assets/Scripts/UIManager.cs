@@ -8,9 +8,9 @@ using Doozy.Engine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] UIView FortifyPanel;
-    [SerializeField] Text FortifyPlayerText;
+    //[SerializeField] Text FortifyPlayerText;
 
-    [SerializeField] GameObject ActivePlayerPanel;
+    //[SerializeField] GameObject ActivePlayerPanel;
 
     [SerializeField] UIView BuildingPanel1;
     [SerializeField] UIButton WoodContainer1;
@@ -51,9 +51,9 @@ public class UIManager : MonoBehaviour
 	[SerializeField] UIButton MelonContainer2;
 	[SerializeField] Text MelonCount2;
 
-    [SerializeField] GameObject HealthPanel;
-    [SerializeField] Image Player1Health;
-    [SerializeField] Image Player2Health;
+    //[SerializeField] GameObject HealthPanel;
+    //[SerializeField] Image Player1Health;
+    //[SerializeField] Image Player2Health;
 
     [SerializeField] UIView WinPanel;
 	[SerializeField] Text WinnerText;
@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
             case SceneManager.Players.PLAYER1:
                 BuildingPanel1.Show();
                 BuildingPanel2.Hide();
-                FortifyPlayerText.text = "Player 1";
+                //FortifyPlayerText.text = "Player 1";
 	            UpdateBuildingMaterialUI(player);
 	            CamPiv.SetBool("ShowPlayer2", false);
 	            CamPiv.SetBool("ShowPlayer1", true);
@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour
             case SceneManager.Players.PLAYER2:
                 BuildingPanel2.Show();
                 BuildingPanel1.Hide();
-                FortifyPlayerText.text = "Player 2";
+                //FortifyPlayerText.text = "Player 2";
 	            UpdateBuildingMaterialUI(player);
 	            CamPiv.SetBool("ShowPlayer1", false);
 	            CamPiv.SetBool("ShowPlayer2", true);
@@ -198,7 +198,7 @@ public class UIManager : MonoBehaviour
         switch (player)
         {
             case SceneManager.Players.PLAYER1:
-                FortifyPlayerText.text = "Player 1";
+                //FortifyPlayerText.text = "Player 1";
                 Player1Panel.SetActive(true);
                 Player2Panel.SetActive(false);
                 AppleCount1.text = "x" + sm.Player1_AppleCount.ToString();
@@ -232,7 +232,7 @@ public class UIManager : MonoBehaviour
 	            CamPiv.SetBool("ShowPlayer2", false);
                 break;
             case SceneManager.Players.PLAYER2:
-                FortifyPlayerText.text = "Player 2";
+                //FortifyPlayerText.text = "Player 2";
                 Player1Panel.SetActive(false);
                 Player2Panel.SetActive(true);
                 AppleCount2.text = "x" + sm.Player2_AppleCount.ToString();
@@ -283,23 +283,23 @@ public class UIManager : MonoBehaviour
         } 
     }
 
-    public void SetPlayerHealth()
-    {
-        int health1 = this.GetComponent<SceneManager>().HealthPlayer1_max;
-        int health1cur = this.GetComponent<SceneManager>().HealthPlayer1_cur;
+    //public void SetPlayerHealth()
+    //{
+    //    int health1 = this.GetComponent<SceneManager>().HealthPlayer1_max;
+    //    int health1cur = this.GetComponent<SceneManager>().HealthPlayer1_cur;
 
-        int health2 = this.GetComponent<SceneManager>().HealthPlayer2_max;
-        int health2cur = this.GetComponent<SceneManager>().HealthPlayer2_cur;
+    //    int health2 = this.GetComponent<SceneManager>().HealthPlayer2_max;
+    //    int health2cur = this.GetComponent<SceneManager>().HealthPlayer2_cur;
 
-        float fill1 = (float)health1cur / (float)health1;
-        float fill2 = (float)health2cur / (float)health2;
+    //    float fill1 = (float)health1cur / (float)health1;
+    //    float fill2 = (float)health2cur / (float)health2;
 
-        //Debug.Log(fill1);
-        //Debug.Log(fill2);
+    //    //Debug.Log(fill1);
+    //    //Debug.Log(fill2);
 
-        Player1Health.fillAmount = fill1;
-        Player2Health.fillAmount = fill2;
-    }
+    //    //Player1Health.fillAmount = fill1;
+    //    //Player2Health.fillAmount = fill2;
+    //}
 
     public void ShowWinPanel(SceneManager.Players player)
     {

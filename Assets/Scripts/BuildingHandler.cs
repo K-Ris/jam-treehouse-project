@@ -33,8 +33,8 @@ public class BuildingHandler : MonoBehaviour
     
 	private void Update()
 	{
-		SwipeTouch();
-		Swipe();
+		//SwipeTouch();
+		//Swipe();
 		
 		if(Input.GetMouseButtonDown(0)){
 			
@@ -56,45 +56,45 @@ public class BuildingHandler : MonoBehaviour
 	}
 	
  
-	public void SwipeTouch()
-	{
-		if(!swipeblock){
+	//public void SwipeTouch()
+	//{
+	//	if(!swipeblock){
 			
-			if(Input.touches.Length > 0)
-			{
-				Touch t = Input.GetTouch(0);
-				if(t.phase == TouchPhase.Began)
-				{
-					//save began touch 2d point
-					firstPressPos = new Vector2(t.position.x,t.position.y);
-				}
-				if(t.phase == TouchPhase.Ended)
-				{
-					//save ended touch 2d point
-					secondPressPos = new Vector2(t.position.x,t.position.y);
+	//		if(Input.touches.Length > 0)
+	//		{
+	//			Touch t = Input.GetTouch(0);
+	//			if(t.phase == TouchPhase.Began)
+	//			{
+	//				//save began touch 2d point
+	//				firstPressPos = new Vector2(t.position.x,t.position.y);
+	//			}
+	//			if(t.phase == TouchPhase.Ended)
+	//			{
+	//				//save ended touch 2d point
+	//				secondPressPos = new Vector2(t.position.x,t.position.y);
                            
-					//create vector from the two points
-					currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
+	//				//create vector from the two points
+	//				currentSwipe = new Vector3(secondPressPos.x - firstPressPos.x, secondPressPos.y - firstPressPos.y);
                
-					//normalize the 2d vector
-					currentSwipe.Normalize();
+	//				//normalize the 2d vector
+	//				currentSwipe.Normalize();
  
-					//swipe left
-					if(currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
-					{
-						Debug.Log("left swipe");
-						RotateBlockLeft();
-					}
-					//swipe right
-					if(currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
-					{
-						Debug.Log("right swipe");
-						RotateBlockRight();
-					}
-				}
-			}
-		}
-	}
+	//				//swipe left
+	//				if(currentSwipe.x < 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+	//				{
+	//					Debug.Log("left swipe");
+	//					RotateBlock();
+	//				}
+	//				//swipe right
+	//				if(currentSwipe.x > 0 && currentSwipe.y > -0.5f && currentSwipe.y < 0.5f)
+	//				{
+	//					Debug.Log("right swipe");
+	//					RotateBlock();
+	//				}
+	//			}
+	//		}
+	//	}
+	//}
  
 	public void Swipe()
 	{
@@ -210,6 +210,11 @@ public class BuildingHandler : MonoBehaviour
 	public void RotateBlockLeft(){
 		if(currentBlock != null)
 			currentBlock.transform.Rotate(90, 0, 0);
+	}
+
+	public void RotateBlock()
+    {
+		currentBlock.transform.Rotate(90, 0, 0);
 	}
 
     public void SetBlock()

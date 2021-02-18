@@ -6,6 +6,8 @@ using Treehouse;
 public class PickupHandler : MonoBehaviour
 {
 	public FruitHandler.FruitType PickupType;
+
+	public GameObject MainObject;
 	
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,7 @@ public class PickupHandler : MonoBehaviour
 			    if (hit.transform.CompareTag("Pickup"))
 			    {
 				    GameObject.FindGameObjectWithTag("SceneManager").GetComponent<SceneManager>().AddFruit(PickupType);
-				    Destroy(this.gameObject);
+				    Destroy(MainObject);
 			    }
 		    }
 	    }

@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickupType: 0
+  MainObject: {fileID: 4805517283000244832}
 --- !u!111 &-1735790649298639601
 Animation:
   m_ObjectHideFlags: 0
